@@ -1,0 +1,4 @@
+{
+  "baseUrl": "https://www.anapioficeandfire.com/api",
+  "housesEndpoint": "/houses"
+}
