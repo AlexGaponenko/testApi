@@ -7,7 +7,7 @@ namespace TestProjectApi.Core
 {
     public class ApiService : IApiService
     {
-        public IRestResponse GetMethod<T>(string uri, string endpoint,  Dictionary<string, string> headers = null, , object requestObject = null)
+        public IRestResponse GetMethod<T>(string uri, string endpoint,  Dictionary<string, string> headers = null, object requestObject = null)
         {
             var client = new RestClient(uri + endpoint);
             var request = new RestRequest(Method.GET) { RequestFormat = DataFormat.Json };

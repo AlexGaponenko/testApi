@@ -13,17 +13,16 @@ namespace TestProjectApi
         BaseLogic logic => new BaseLogic();
         TestData data => new TestData();
         IApiService client = new ApiService();
-
+        IRestResponse getResult;
         [SetUp]
         public void Setup()
         {
-            //var getResult = client.GetMethod<DTO>(Constant.baseUrl, Constant.housesEndpoint);
+            getResult = client.GetMethod<DTO>(Constant.baseUrl, Constant.housesEndpoint, data.filters);
         }
 
         [Test, Order(1)]
         public void Test1()
         {
-            IRestResponse getResult = client.GetMethod<DTO>(Constant.baseUrl, Constant.housesEndpoint, data.filters);
 
             Assert.AreEqual(client.GetStatusCode<DTO>(getResult), 200, "Request server is correct");
             List<DTO> getListObj = client.GetResult<DTO>(getResult);
