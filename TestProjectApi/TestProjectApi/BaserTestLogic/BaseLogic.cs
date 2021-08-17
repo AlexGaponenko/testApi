@@ -1,4 +1,9 @@
 ﻿using Microsoft.CSharp.RuntimeBinder;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json.Schema;
+using Newtonsoft.Json.Schema.Generation;
+using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.Dynamic;
@@ -51,6 +56,22 @@ namespace TestProjectApi.BaserTestLogic
                 return source.GetType().GetProperty(propertyName).GetValue(source, null) as string;
             }
             catch(Exception e) { return null; }
+        }
+
+        public bool IsJsonValid<TSchema>(IRestResponse response)
+        {
+            bool checkSchema = false;
+            JSchemaGenerator generator = new JSchemaGenerator();
+            JSchema schema = generator.Generate(typeof(TSchema));
+            schema.AllowAdditionalProperties = false;
+            JArray a = JArray.Parse(response.Content);
+            foreach(var n in a)
+            {
+                string nnn = n.ToString();
+                checkSchema = n.IsValid(schema);
+                if (checkSchema == false) break;
+            }
+            return checkSchema;
         }
     }
 }

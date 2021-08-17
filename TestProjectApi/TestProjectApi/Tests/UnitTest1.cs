@@ -1,3 +1,5 @@
+using Newtonsoft.Json.Schema;
+using Newtonsoft.Json.Schema.Generation;
 using NUnit.Framework;
 using RestSharp;
 using System.Collections.Generic;
@@ -8,16 +10,16 @@ using TestProjectApi.Tests;
 
 namespace TestProjectApi
 {
-    public class TestsApiTests
+    public class PositiveTest
     {
         BaseLogic logic => new BaseLogic();
-        TestData data => new TestData();
+        private TestData dataSome => new TestData();
         IApiService client = new ApiService();
         IRestResponse myResponse;
         [SetUp]
         public void Setup()
         {
-            myResponse = client.GetMethod<DTO>(Constant.baseUrl, Constant.housesEndpoint, data.filters);
+            myResponse = client.GetMethod<DTO>(Constant.baseUrl, Constant.housesEndpoint, dataSome.filters);
         }
 
         [Test, Order(1)]
@@ -25,8 +27,14 @@ namespace TestProjectApi
         {
             Assert.AreEqual(client.GetStatusCode<DTO>(myResponse), 200, "Request server is correct");
             List<DTO> getListObj = client.GetResult<DTO>(myResponse);
-            Assert.True(logic.checkFilterByParam(data.filterRegion, "Region", getListObj), "The filter is not working correct");
-            Assert.True(logic.checkIsNotEmpty(data.words, getListObj), "The filter is not working correct");
+            Assert.True(logic.checkFilterByParam(dataSome.filterRegion, "Region", getListObj), "The filter is not working correct");
+            Assert.True(logic.checkIsNotEmpty(dataSome.words, getListObj), "The filter is not working correct");
+        }
+
+        [Test, Order(2)]
+        public void Test2()
+        {
+            Assert.True(logic.IsJsonValid<SchemaClass>(myResponse), "Json schema is not correct");
         }
     }
 }

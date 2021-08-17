@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Schema;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -12,9 +13,15 @@ namespace TestProjectApi.Tests
             { "region", "Dorne" },
             { "haswords", "true" } 
         };
+        public readonly Dictionary<string, int> filtersIncorrect = new Dictionary<string, int>
+        {
+            { "region", 1 },
+        };
+
         public readonly string filterRegion = "Dorne";
         public readonly string words= "words";
 
         #endregion
+
     }
 }
