@@ -1,9 +1,6 @@
 ﻿using NUnit.Framework;
 using RestSharp;
-using System;
 using System.Collections.Generic;
-using System.Text;
-using TestProjectApi.BaserTestLogic;
 using TestProjectApi.Core;
 using TestProjectApi.Core.Helper;
 
@@ -21,6 +18,7 @@ namespace TestProjectApi.Tests
         }
 
         [Test, Order(1)]
+        [Description("Negative test")]
         public void Test1()
         {
             List<DTO> getListObj = client.GetResult<DTO>(myResponse);

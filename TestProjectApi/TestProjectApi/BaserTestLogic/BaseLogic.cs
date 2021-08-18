@@ -18,6 +18,13 @@ namespace TestProjectApi.BaserTestLogic
 {
     public class BaseLogic
     {
+        /// <summary>
+        /// Checks if the object contains an value by property name
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="prop"></param>
+        /// <param name="listObj"></param>
+        /// <returns>Return false if property empty or not equal value</returns>
         public bool checkFilterByParam<T>(string param, string prop, List<T> listObj)
         {
             bool check = true;
@@ -34,6 +41,13 @@ namespace TestProjectApi.BaserTestLogic
             return check;
         }
 
+        /// <summary>
+        /// Checks if the object contains an empty value by property name
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="prop"></param>
+        /// <param name="listObj"></param>
+        /// <returns>Return true if property empty; false if not empty</returns>
         public bool checkIsNotEmpty<T>(string prop, List<T> listObj)
         {
             bool check = true;
@@ -49,6 +63,13 @@ namespace TestProjectApi.BaserTestLogic
             return check;
         }
 
+        /// <summary>
+        /// Get the value of the property according to the DTO object
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="source"></param>
+        /// <param name="propertyName"></param>
+        /// <returns>Return null if property not present in object</returns>
         public string GetPropertyValue<T>(T source, string propertyName)
         {
             try
@@ -58,6 +79,12 @@ namespace TestProjectApi.BaserTestLogic
             catch(Exception e) { return null; }
         }
 
+        /// <summary>
+        /// Takes the response and compares it to the schema
+        /// </summary>
+        /// <typeparam name="TSchema"></typeparam>
+        /// <param name="response"></param>
+        /// <returns>Return true if response content contains value equal schema</returns>
         public bool IsJsonValid<TSchema>(IRestResponse response)
         {
             bool checkSchema = false;

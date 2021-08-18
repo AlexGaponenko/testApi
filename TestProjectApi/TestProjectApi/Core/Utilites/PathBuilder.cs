@@ -9,6 +9,11 @@ namespace TestProjectApi.Core.Utilites
     public class PathBuilder
     {
         private static string _exsistSetingsPath = @"..\..\..\Core\";
+
+        /// <summary>
+        /// Get local path
+        /// </summary>
+        /// <returns>Return the local path to the working directory</returns>
         internal static string GetLocalPath()
         {
             string path = new Uri(Assembly.GetExecutingAssembly().CodeBase).LocalPath;
@@ -16,7 +21,11 @@ namespace TestProjectApi.Core.Utilites
             return fullPath;
         }
 
-        public static string GetExsistingUserPath()
+        /// <summary>
+        /// Get exsisting path to settings
+        /// </summary>
+        /// <returns>Return the local path to the settings directory</returns>
+        public static string GetExsistingPathToSettings()
         {
             string fullPath = GetLocalPath() + _exsistSetingsPath;
             if (!Directory.Exists(fullPath))

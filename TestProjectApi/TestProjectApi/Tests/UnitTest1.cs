@@ -23,6 +23,7 @@ namespace TestProjectApi
         }
 
         [Test, Order(1)]
+        [Description("Checking the filtering")]
         public void Test1()
         {
             Assert.AreEqual(client.GetStatusCode<DTO>(myResponse), 200, "Request server is correct");
@@ -32,6 +33,7 @@ namespace TestProjectApi
         }
 
         [Test, Order(2)]
+        [Description("Checking the schema")]
         public void Test2()
         {
             Assert.True(logic.IsJsonValid<SchemaClass>(myResponse), "Json schema is not correct");

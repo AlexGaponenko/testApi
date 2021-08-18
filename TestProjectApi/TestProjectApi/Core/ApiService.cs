@@ -10,6 +10,15 @@ namespace TestProjectApi.Core
 {
     public class ApiService : IApiService
     {
+        /// <summary>
+        /// Get method with parameters
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="uri"></param>
+        /// <param name="endpoint"></param>
+        /// <param name="headers">Not required</param>
+        /// <param name="requestObject">Not required</param>
+        /// <returns>IRestResponse</returns>
         public IRestResponse GetMethod<T>(string uri, string endpoint,  Dictionary<string, string> headers = null, object requestObject = null)
         {
             var client = new RestClient(uri + endpoint);
@@ -31,6 +40,15 @@ namespace TestProjectApi.Core
 
         }
 
+        /// <summary>
+        /// Not correct Get method with parameters 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="uri"></param>
+        /// <param name="endpoint"></param>
+        /// <param name="headers">Not required</param>
+        /// <param name="requestObject">Not required</param>
+        /// <returns>IRestResponse</returns>
         public IRestResponse GetMethodWrong<T>(string uri, string endpoint, Dictionary<string, int> headers = null, object requestObject = null)
         {
             var client = new RestClient(uri + endpoint);
@@ -52,13 +70,26 @@ namespace TestProjectApi.Core
 
         }
 
+        /// <summary>
+        /// Get method without parameters
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="response"></param>
+        /// <returns>Status code</returns>
         public int GetStatusCode<T>(IRestResponse response)
         {
             HttpStatusCode statusCode = response.StatusCode;
             int numericStatusCode = (int)statusCode;
             return numericStatusCode;
         }
-        public  List<T> GetResult<T>(IRestResponse restResponse)
+
+        /// <summary>
+        /// Parse response
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="restResponse"></param>
+        /// <returns>List objects of a given type</returns>
+        public List<T> GetResult<T>(IRestResponse restResponse)
         {
             return JsonConvert.DeserializeObject<List<T>>(restResponse.Content, 
             new JsonSerializerSettings 

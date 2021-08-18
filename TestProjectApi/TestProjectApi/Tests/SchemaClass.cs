@@ -5,7 +5,9 @@ using Newtonsoft.Json.Converters;
 
 namespace TestProjectApi.Tests
 {
-
+    /// <summary>
+    /// Scheme of the returned list of houses of book characters
+    /// </summary>
     public partial class SchemaClass
     {
         [JsonProperty("url")]

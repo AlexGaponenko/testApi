@@ -5,6 +5,10 @@ using System.Text;
 
 namespace TestProjectApi.Tests
 {
+
+    /// <summary>
+    /// Data for tests
+    /// </summary>
     public class TestData
     {
         #region Text

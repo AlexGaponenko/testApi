@@ -8,15 +8,17 @@ using TestProjectApi.Core.Utilites;
 
 namespace TestProjectApi.Core.Helper
 {
+    /// <summary>
+    /// Initializing data for worcking with API
+    /// </summary>
     public class TestDataInitializing
     {
         private static string nameJsonFile = "Settings.json";
 
-        public static AppSettingsObj InitializingLoginData()
+        public static AppSettingsObj InitializingData()
         {
-            var pathToSettings = PathBuilder.GetExsistingUserPath();
+            var pathToSettings = PathBuilder.GetExsistingPathToSettings();
             string objectJsonFile = File.ReadAllText(pathToSettings + nameJsonFile);
-            //loginData = System.Text.Json.JsonSerializer.Deserialize<LoginData>(objectJsonFile);
             var loginData = JsonConvert.DeserializeObject<AppSettingsObj>(objectJsonFile);
             return loginData;
         }
