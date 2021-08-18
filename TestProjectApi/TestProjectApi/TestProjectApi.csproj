@@ -7,13 +7,20 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Allure.Commons" Version="3.5.0.65" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.9.4" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="Newtonsoft.Json.Schema" Version="3.0.14" />
     <PackageReference Include="NUnit" Version="3.13.1" />
+    <PackageReference Include="NUnit.Allure" Version="1.0.14" />
     <PackageReference Include="NUnit3TestAdapter" Version="3.17.0" />
     <PackageReference Include="coverlet.collector" Version="3.0.2" />
     <PackageReference Include="RestSharp" Version="106.12.0" />
   </ItemGroup>
 
+	  <ItemGroup>
+    <None Update="allureConfig.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 </Project>

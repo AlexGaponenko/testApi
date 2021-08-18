@@ -9,6 +9,7 @@ namespace TestProjectApi.Core.Utilites
     public class PathBuilder
     {
         private static string _exsistSetingsPath = @"..\..\..\Core\";
+        private static string _localPathToConfig = @"\..\..\..\";
 
         /// <summary>
         /// Get local path
@@ -32,6 +33,13 @@ namespace TestProjectApi.Core.Utilites
             {
                 throw new Exception("No settings folder '" + fullPath + "' was found.");
             }
+            return fullPath;
+        }
+
+        internal static string GetLocalPathToAllureConfig()
+        {
+            string path = new Uri(Assembly.GetExecutingAssembly().CodeBase).LocalPath;
+            string fullPath = Path.GetDirectoryName(path) + _localPathToConfig;
             return fullPath;
         }
     }

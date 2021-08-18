@@ -1,4 +1,6 @@
-﻿using NUnit.Framework;
+﻿using NUnit.Allure.Attributes;
+using NUnit.Allure.Core;
+using NUnit.Framework;
 using RestSharp;
 using System.Collections.Generic;
 using TestProjectApi.Core;
@@ -6,7 +8,10 @@ using TestProjectApi.Core.Helper;
 
 namespace TestProjectApi.Tests
 {
-    public class NegativeTest
+    [TestFixture]
+    [AllureNUnit]
+    [AllureSuite("NegativeTest")]
+    public class NegativeTest : AllureFixture
     {
         private TestData dataSome => new TestData();
         IApiService client = new ApiService();

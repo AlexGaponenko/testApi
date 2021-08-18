@@ -1,5 +1,7 @@
 using Newtonsoft.Json.Schema;
 using Newtonsoft.Json.Schema.Generation;
+using NUnit.Allure.Attributes;
+using NUnit.Allure.Core;
 using NUnit.Framework;
 using RestSharp;
 using System.Collections.Generic;
@@ -10,7 +12,10 @@ using TestProjectApi.Tests;
 
 namespace TestProjectApi
 {
-    public class PositiveTest
+    [TestFixture]
+    [AllureNUnit]
+    [AllureSuite("PositiveTest")]
+    public class PositiveTest : AllureFixture
     {
         BaseLogic logic => new BaseLogic();
         private TestData dataSome => new TestData();
