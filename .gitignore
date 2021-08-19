@@ -305,12 +305,7 @@ __pycache__/
 
 
 #Allure
-UIAutomatedTests/PCFTest/allure-results/
-UIAutomatedTests/PCFTest/allure-results/*
-UIAutomatedTests/PCFTest/allure-2.7.0/
-UIAutomatedTests/PCFTest/allure-report/
-UIAutomatedTests/PCFTest/allureConfig.json
-allureConfig.json
+!allureConfig.json
 
 #config
 UIAutomatedTests/PCFTest/App.config
